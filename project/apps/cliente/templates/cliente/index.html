@@ -1,0 +1,20 @@
+{% extends 'home/index.html' %}
+
+    {% block TITULO_INDEX %}
+        Clientes
+    {% endblock TITULO_INDEX %}
+
+    {% block CONTENIDO_INDEX %}
+
+        {% for cliente in clientes %}
+            <div class="container">
+                <h2>{{ cliente.apellido }}, {{ cliente.nombre }}</h2>
+                <ul>{{ cliente.documento }}</ul>
+                <ul>{{ cliente.contacto }}</ul>
+                <ul>{{ cliente.domicilio }}</ul>
+                <ul>{{ cliente.nacimiento }}</ul>
+                <ul>{{ cliente.ciudad_id }}</ul>
+            </div>
+        {% endfor %}
+        <!-- "nombre", "apellido", "documento", "contacto", "domicilio", "nacimiento", "ciudad_id" -->
+    {% endblock CONTENIDO_INDEX %}

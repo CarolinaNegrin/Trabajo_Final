@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+from django.urls import reverse_lazy
 from pathlib import Path
 import sys
 
@@ -127,3 +127,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = reverse_lazy("home:login")
+# ! esto es necesario cuando views no redirecciona a otra url
+LOGIN_REDIRECT_URL = reverse_lazy("home:index")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR/"media"

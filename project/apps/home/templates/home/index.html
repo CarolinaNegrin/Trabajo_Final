@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+    
+{% block CONTENIDO_BASE %}
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">
+            {% block TITULO_INDEX %}
+        
+            {% endblock TITULO_INDEX %}
+            
+        </div>
+        {% block CONTENIDO_INDEX %}
+        {{ mensaje }}
+        {% endblock CONTENIDO_INDEX %}
+    </div>
+</header>
+
+   
+
+    
+
+{% endblock CONTENIDO_BASE %}
