@@ -13,6 +13,7 @@ def contacto(request):
 
 
 def contact_view(request: HttpRequest) -> HttpResponse:
+    # Desde esta función un usuario no registrado puede enviar un mensaje de contacto para consultas
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():

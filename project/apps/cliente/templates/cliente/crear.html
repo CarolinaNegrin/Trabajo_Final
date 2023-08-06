@@ -1,0 +1,53 @@
+{% extends 'home/index.html' %}
+
+{% block TITULO_INDEX %}
+    Registrar Cliente
+{% endblock TITULO_INDEX %}
+
+
+{% block CONTENIDO_INDEX %}
+    <p class="card-subtitle ">Para realizar pedidos necesitamos que registre sus datos</p>
+
+    <div class="row align-items-stretch mb-5">
+        <div class="col-md-6">
+            <div class="form-group">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div>
+                        <label for="{{ form.nombre.id_for_label }}" class="form-control bg-primary">Nombre: </label>
+                        <div class="form-control-color">{{ form.nombre }}</div>
+                    </div>
+                    <div>
+                        <label for="{{ form.apellido.id_for_label }}" class="form-control bg-primary ">Apellido: </label>
+                        <div class="form-control-color">{{ form.apellido }} </div> <div> <a href="{% url 'producto:categoria_create' %}" class="btn btn-secondary  btn-sn">Agregar categoría</a></div>
+                    </div>
+                    <div>
+                        <label for="{{ form.documento.id_for_label }}" class="form-control bg-primary ">Documento: </label>
+                        <div class="text-start ">{{ form.documento }}</div>
+                    </div>
+                    <div>
+                        <label for="{{ form.contacto.id_for_label }}" class="form-control bg-primary ">Contacto: </label>
+                        <div class="form-control-color">{{ form.contacto }}</div>
+                    </div>
+                    <div>
+                        <label for="{{ form.domicilio.id_for_label }}" class="form-control bg-primary ">Domicilio: </label>
+                        <div class="form-control-color">{{ form.domicilio }}</div>
+                    </div>
+                    <div>
+                        <label for="{{ form.nacimiento.id_for_label }}" class="text-light ">Fecha de Nacimiento: </label>
+                        <div class="form-control-color">{{ form.nacimiento }}</div>
+                    </div>
+                    <div>
+                        <label for="{{ form.ciudad_id.id_for_label }}" class="text-light ">Ciudad de origen: </label>
+                        <div class="form-control-color">{{ form.ciudad_id }}</div>
+                    </div>
+
+
+                   
+                    <button type="submit">Guardar</button>
+                </form> 
+            </div>
+        </div>
+    </div>
+
+{% endblock CONTENIDO_INDEX %}

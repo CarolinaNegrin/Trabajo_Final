@@ -7,7 +7,7 @@ from .models import Cliente
 class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
-        fields = ["usuario", "nombre", "apellido", "documento", "contacto", "domicilio", "nacimiento", "ciudad_id"]
+        fields = "__all__"
 
 
 class CustomAuthenticationForm(AuthenticationForm):
@@ -24,8 +24,7 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2"]
-        # Quita los mensajes de ayuda
-        # help_texts = {k: "" for k in fields}
+        help_texts = {k: "" for k in fields}
         widgets = {
             "username": forms.TextInput(attrs={"class": "form-control"}),
             "password1": forms.PasswordInput(attrs={"class": "form-control"}),

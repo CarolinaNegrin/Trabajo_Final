@@ -1,0 +1,11 @@
+{% extends 'home/index.html' %}
+
+{% block TITULO_INDEX %}
+    <H1>Realizar Pedido</H1>
+{% endblock TITULO_INDEX %}
+
+{% block CONTENIDO_INDEX %}
+    <h3>Tenga en cuenta que para realizar un pedido debe registrar sus datos de cliente</h3>
+    <li><a href="{% url 'cliente:crear_cliente' %}">Registrar datos de cliente</a></li>
+    <li><a href="{% url 'venta:registrar_venta' %}">Registrar nuevo pedido</a></li>
+{% endblock CONTENIDO_INDEX %}

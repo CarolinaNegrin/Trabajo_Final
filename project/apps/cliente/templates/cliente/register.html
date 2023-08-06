@@ -1,18 +1,16 @@
-{% extends 'home/index.html' %}
+{% extends 'Home/base.html' %}
 
-{% block TITULO_INDEX %}
-    Registrarse
-{% endblock TITULO_INDEX %}
+{% block TITULO %}
+    Crear Usuario
+{% endblock TITULO %}
 
 
-{% block CONTENIDO_INDEX %}
+{% block CONTENIDO %}
 
-    <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-        <div class="d-grid gap-3"> 
-            <button type="submit" class="btn btn-lg ">Registrar nuevo usuario</button>
-        </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
     </form>
 
-{% endblock CONTENIDO_INDEX %}
+{% endblock CONTENIDO %}

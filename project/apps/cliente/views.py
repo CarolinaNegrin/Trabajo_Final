@@ -11,25 +11,27 @@ from django.contrib.auth.models import User
 from django.views.generic import UpdateView
 # Create your views here.
 
+@staff_member_required
 def home(request):
+    # Desde esta función un usuario parte del staff podrá visualizar todos los clientes registrados
     clientes_registros = Cliente.objects.all()
     contexto = {"clientes": clientes_registros}
-    # return render(request, "index.html", {"clientes": clientes_registros})
     return render(request, "cliente/index.html", contexto)
 
-# def registrar_cliente(request: HttpRequest) -> HttpResponse:
-
-#     if request.method == "POST":
-#         form = ClienteForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect("cliente:home")
-#     else:  # request.method == "GET"
-#         form = ClienteForm()
-#     return render(request, "cliente/crear.html", {"form": form})
+def registrar_cliente(request: HttpRequest) -> HttpResponse:
+    # Desde esta función los usuarios podrán registrar sus datos de cliente para posteriormente realizar pedidos
+    if request.method == "POST":
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, "home/index.html", {"mensaje": "Registró sus datos correctamente"})
+    else:  
+        form = ClienteForm()
+    return render(request, "cliente/crear.html", {"form": form})
 
 
 def register(request: HttpRequest) -> HttpResponse:
+    # Registro de usuarios
     if request.method == "POST":
         form = forms.CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -42,6 +44,7 @@ def register(request: HttpRequest) -> HttpResponse:
 
 
 def login_request(request: HttpRequest) -> HttpResponse:
+    # Inicio de sesión
     if request.method == "POST":
         form = forms.CustomAuthenticationForm(request, request.POST)
         if form.is_valid():

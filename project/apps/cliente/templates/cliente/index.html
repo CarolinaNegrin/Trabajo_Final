@@ -1,19 +1,24 @@
 {% extends 'home/index.html' %}
 
     {% block TITULO_INDEX %}
-        Clientes
+        <h1>Clientes</h1>
     {% endblock TITULO_INDEX %}
 
     {% block CONTENIDO_INDEX %}
 
         {% for cliente in clientes %}
             <div class="container">
-                <h2>{{ cliente.apellido }}, {{ cliente.nombre }}</h2>
-                <ul>{{ cliente.documento }}</ul>
-                <ul>{{ cliente.contacto }}</ul>
-                <ul>{{ cliente.domicilio }}</ul>
-                <ul>{{ cliente.nacimiento }}</ul>
-                <ul>{{ cliente.ciudad_id }}</ul>
+                <h2 class="text-primary text-start  ">{{ cliente.apellido }}, {{ cliente.nombre }}</h2>
+                <div class="text-start ">
+                    {% if cliente.documento != None %}
+                        <ul>Documento: {{ cliente.documento }}</ul>
+                    {% endif %}
+                    
+                    <ul>Contacto: {{ cliente.contacto }}</ul>
+                    <ul>Domicilio: {{ cliente.domicilio }}</ul>
+                    <ul>Fecha de nacimiento: {{ cliente.nacimiento }}</ul>
+                    <ul>Ciudad de Orígen: {{ cliente.ciudad_id }}</ul>
+                </div>
             </div>
         {% endfor %}
         <!-- "nombre", "apellido", "documento", "contacto", "domicilio", "nacimiento", "ciudad_id" -->

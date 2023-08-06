@@ -10,7 +10,6 @@ class Ciudad(models.Model):
         return self.nombre
 
 class Cliente (models.Model):
-    usuario = models.OneToOneField(User, related_name="usuario", on_delete=models.SET_NULL, blank=True, null=True)
     nombre = models.CharField(max_length=20, blank=False, null=False)
     apellido = models.CharField(max_length=20, blank=False, null=False)
     documento = models.IntegerField(max_length=8, blank=True, null=True)
