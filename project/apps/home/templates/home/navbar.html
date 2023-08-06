@@ -12,12 +12,12 @@
                     <li class="nav-item"><a class="nav-link" href="#team">Realizar Pedidos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Productos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'home:contacto' %}">Sobre Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'cliente:datos_cliente' user_id %}">Mi Cuenta</a></li>
+                    
                     <li class="nav-item"><a class="nav-link text-info" href="{% url 'cliente:logout' %}">Logout</a></li>
                 {% else %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'cliente:register' %}">Registrarse</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'cliente:login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home:contacto' %}">Sobre Nosotros</a></li>
                 {% endif %}
             </ul>
         </div>

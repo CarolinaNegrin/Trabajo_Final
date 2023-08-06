@@ -55,7 +55,3 @@ def login_request(request: HttpRequest) -> HttpResponse:
         form = forms.CustomAuthenticationForm()
     return render(request, "cliente/login.html", {"form": form})
 
-class datos_cliente(UpdateView):
-    model = Cliente
-    form_class = ClienteForm
-    success_url = reverse_lazy("cliente:detail")
