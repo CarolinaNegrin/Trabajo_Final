@@ -1,0 +1,30 @@
+
+{% extends 'home/index.html' %}
+{% load static %}
+
+{% block TITULO_INDEX %}
+    <h1>{{ object }}</h1>
+{% endblock TITULO_INDEX %}
+
+{% block CONTENIDO_INDEX %}
+    <ul>
+        <li>Nombre: {{ object.nombre }} </li>
+        <li>Categoría: {{ object.categoria_id.nombre }}</li>
+        <li>Descripción: {{ object.descripcion }} </li>
+        {% if user.is_staff %}
+            <li>Stock: {{ object.stock }}</li>
+        {% endif %}
+        {% if object.personalizable == True %}
+            <li>Personalizable: SI</li>
+        {% else %}
+            <li>Personalizable: NO</li>
+        {% endif %}
+       
+        <li>Precio: ${{ object.precio }}</li>
+        {% if object.imagen.url %}
+            <li><img src="{{ object.imagen.url }}" alt="imagen" width="200" ></li>
+        {% endif %}
+        
+    </ul>
+
+{% endblock CONTENIDO_INDEX %}

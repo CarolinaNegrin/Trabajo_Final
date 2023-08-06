@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+
+{% block TITULO_INDEX %} 
+    Eliminación de Productos
+{% endblock TITULO_INDEX %}
+
+{% block CONTENIDO_INDEX %}
+
+    <p class="fs-5 fst-italic">¿Confirma eliminar "{{ object }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+    </form>
+
+{% endblock CONTENIDO_INDEX %}

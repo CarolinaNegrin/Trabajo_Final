@@ -1,0 +1,49 @@
+{% extends 'home/index.html' %}
+
+    {% block TITULO_INDEX %} 
+        Crear/Actualizar Productos
+    {% endblock TITULO_INDEX %}
+
+    {% block CONTENIDO_INDEX %}
+        <div class="row align-items-stretch mb-5">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div>
+                            <label for="{{ form.nombre.id_for_label }}" class="form-control bg-primary">Nombre: </label>
+                            <div class="form-control-color">{{ form.nombre }}</div>
+                        </div>
+                        <div>
+                            <label for="{{ form.categoria_id.id_for_label }}" class="form-control bg-primary ">Categoría: </label>
+                            <div class="form-control-color">{{ form.categoria_id }} </div> <div> <a href="{% url 'producto:categoria_create' %}" class="btn btn-secondary  btn-sn">Agregar categoría</a></div>
+                        </div>
+                        <div>
+                            <label for="{{ form.descripcion.id_for_label }}" class="form-control bg-primary ">Descripción: </label>
+                            <div class="text-start ">{{ form.descripcion }}</div>
+                        </div>
+                        <div>
+                            <label for="{{ form.precio.id_for_label }}" class="form-control bg-primary ">Precio: </label>
+                            <div class="form-control-color">{{ form.precio }}</div>
+                        </div>
+                        <div>
+                            <label for="{{ form.stock.id_for_label }}" class="form-control bg-primary ">Stock disponible: </label>
+                            <div class="form-control-color">{{ form.stock }}</div>
+                        </div>
+                        <div>
+                            <label for="{{ form.personalizable.id_for_label }}" class="text-light ">Es personalizable: </label>
+                            <div class="form-control-color">{{ form.personalizable }}</div>
+                        </div>
+                        <div>
+                            <label for="{{ form.imagen.id_for_label }}" class="text-light ">Imagen del producto: </label>
+                            <div class="form-control-color">{{ form.imagen }}</div>
+                        </div>
+
+
+                       
+                        <button type="submit">Guardar</button>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    {% endblock CONTENIDO_INDEX %}

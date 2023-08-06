@@ -10,7 +10,7 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0" >
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="#team">Realizar Pedidos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'producto:producto_list' %}">Productos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Servicios</a></li>
                     
                     <li class="nav-item"><a class="nav-link text-info" href="{% url 'cliente:logout' %}">Logout</a></li>

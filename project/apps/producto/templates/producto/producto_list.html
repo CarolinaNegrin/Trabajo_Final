@@ -1,0 +1,39 @@
+{% extends 'home/index.html' %}
+
+{% block TITULO_INDEX %}
+    <h1>Productos Disponibles</h1>
+{% endblock TITULO_INDEX %}
+
+{% block CONTENIDO_INDEX %}
+    {% if object_list %}
+    <div>
+        <form action="{% url 'producto:producto_list' %}" method="get">
+            <input type="text" name="consulta" placeholder="Buscar...">
+        </form>
+    </div>
+
+    {% for object in object_list %}
+        <div class="container bg-transparent   text-start  ">
+            <ul>
+                {{ object.nombre }} ${{ object.precio}}
+                <div class="column-gap-2 ">
+                    <a href="{% url 'producto:producto_detail' object.id %}" class="btn btn-secondary  btn-sn">Ver detalle</a>
+                    {% if user.is_staff %}
+                        <a href="{% url 'producto:producto_update' object.id %}" class="btn btn-secondary  btn-sn">Actualizar</a> 
+                        <a href="{% url 'producto:producto_delete' object.id %}" class="btn btn-secondary  btn-sn">Eliminar</a> 
+                    {% endif %}
+                    
+                </div>
+
+            </ul>
+        <br>
+        </div>
+    {% endfor %}        
+    {% else %}
+    <p>no hay productos</p>
+    {% endif %}
+    {% if user.is_staff %}
+        <a href="{% url 'producto:producto_create' %}">Agregar producto</a>
+    {% endif %}
+    
+{% endblock CONTENIDO_INDEX %}
