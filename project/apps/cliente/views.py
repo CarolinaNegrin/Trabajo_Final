@@ -1,14 +1,14 @@
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import redirect, render
-from .models import Cliente
-from .forms import ClienteForm
+from .models import Cliente, Ciudad
+from .forms import ClienteForm, CiudadForm
 from django.http import HttpRequest, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from . import forms
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, CreateView
 # Create your views here.
 
 @staff_member_required
@@ -28,6 +28,11 @@ def registrar_cliente(request: HttpRequest) -> HttpResponse:
     else:  
         form = ClienteForm()
     return render(request, "cliente/crear.html", {"form": form})
+
+class CiudadCreate(CreateView):
+    model = Ciudad
+    form_class = CiudadForm
+    success_url = reverse_lazy("cliente:crear_cliente")
 
 
 def register(request: HttpRequest) -> HttpResponse:

@@ -1,12 +1,17 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
-from .models import Cliente
+from .models import Cliente, Ciudad
 
 
 class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
+        fields = "__all__"
+
+class CiudadForm(forms.ModelForm):
+    class Meta:
+        model = Ciudad
         fields = "__all__"
 
 

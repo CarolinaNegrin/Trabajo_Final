@@ -1,0 +1,24 @@
+{% extends 'home/index.html' %}
+
+{% block TITULO_INDEX %}
+    Registrar Ciudad
+{% endblock TITULO_INDEX %}
+
+
+{% block CONTENIDO_INDEX %}
+    <div class="row align-items-stretch mb-5">
+        <div class="col-md-6">
+            <div class="form-group">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div>
+                        <label for="{{ form.nombre.id_for_label }}" class="form-control bg-primary">Ciudad: </label>
+                        <div class="form-control-color">{{ form.nombre }}</div>
+                    </div>                
+                    <button type="submit">Guardar</button>
+                </form> 
+            </div>
+        </div>
+    </div>
+
+{% endblock CONTENIDO_INDEX %}

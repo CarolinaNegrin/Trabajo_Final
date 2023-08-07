@@ -31,7 +31,14 @@
                 <div class="container">
                     <div class="masthead-subheading">Encontrá el regalo IDEAL</div>
                     <div class="masthead-heading text-uppercase">Bienvenido a La Super Regalería</div>
-                    <a class="btn btn-primary btn-xl text-uppercase" href="https://wa.me/+5492964544342">Enviar Whatsapp</a>
+                    {% if user.is_staff %}
+                            <a href="{% url 'admin:index' %}" class="btn btn-primary ">Panel de Administración</a>
+                        
+                    {% else %}
+                        <a class="btn btn-primary btn-xl text-uppercase" href="https://wa.me/+5492964544342">Enviar Whatsapp</a>
+                    {% endif %}
+
+                   
                 </div>
             </header>
         {% endblock CONTENIDO_BASE %}

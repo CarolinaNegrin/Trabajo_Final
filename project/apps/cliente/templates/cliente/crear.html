@@ -19,7 +19,7 @@
                     </div>
                     <div>
                         <label for="{{ form.apellido.id_for_label }}" class="form-control bg-primary ">Apellido: </label>
-                        <div class="form-control-color">{{ form.apellido }} </div> <div> <a href="{% url 'producto:categoria_create' %}" class="btn btn-secondary  btn-sn">Agregar categoría</a></div>
+                        <div class="form-control-color">{{ form.apellido }} </div> 
                     </div>
                     <div>
                         <label for="{{ form.documento.id_for_label }}" class="form-control bg-primary ">Documento: </label>
@@ -39,7 +39,7 @@
                     </div>
                     <div>
                         <label for="{{ form.ciudad_id.id_for_label }}" class="text-light ">Ciudad de origen: </label>
-                        <div class="form-control-color">{{ form.ciudad_id }}</div>
+                        <div class="form-control-color">{{ form.ciudad_id }}</div> <div><a href="{% url 'cliente:registrar_ciudad' %}">Agregar Ciudad</a></div>
                     </div>
 
 

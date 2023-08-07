@@ -13,7 +13,7 @@
             <div class="container bg-transparent   text-start  ">
                     <h2 class="text-primary text-start  ">{{ object.fecha }}</h2>
                     <div class="text-start ">
-                        <ul>Cliente: {{ object.cliente_id }}</ul>
+                        <ul>Cliente: {{ object.cliente_id }} - Contacto: {{ object.cliente_id.contacto }}</ul>
                         <ul>Producto: {{ object.producto_id }}</ul> 
                         <ul><img src="{{ object.producto_id.imagen.url }}" alt="{{ object.producto_id }}" width="200"></ul>
                         <ul>Cantidad: {{ object.cantidad }}</ul>
