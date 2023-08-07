@@ -1,0 +1,30 @@
+
+{% extends 'home/index.html' %}
+{% load static %}
+    {% block TITULO_INDEX %}
+        <h1>Ventas</h1>
+    {% endblock TITULO_INDEX %}
+    
+    {% block CONTENIDO_INDEX %}
+        {% if object_list %}
+       
+    
+        {% for object in object_list %}
+            <div class="container bg-transparent   text-start  ">
+                    <h2 class="text-primary text-start  ">{{ object.fecha }}</h2>
+                    <div class="text-start ">
+                        <ul>Cliente: {{ object.cliente_id }}</ul>
+                        <ul>Producto: {{ object.producto_id }}</ul> 
+                        <ul><img src="{{ object.producto_id.imagen.url }}" alt="{{ object.producto_id }}" width="200"></ul>
+                        <ul>Cantidad: {{ object.cantidad }}</ul>
+                        <ul>Total: {{ object.subtotal }}</ul>
+                    </div>
+            <br>
+            </div>
+        {% endfor %}        
+        {% else %}
+        <p>No hay ventas registradas</p>
+        {% endif %}
+        
+        
+    {% endblock CONTENIDO_INDEX %}

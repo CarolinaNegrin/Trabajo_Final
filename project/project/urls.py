@@ -24,7 +24,7 @@ urlpatterns = [
     path('cliente/', include('cliente.urls')),
     path('', include('home.urls')),
     path('producto/', include('producto.urls')),
-    # path('venta/', include('venta.urls')),
+    path('venta/', include('venta.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

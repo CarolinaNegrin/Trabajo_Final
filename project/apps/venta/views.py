@@ -1,28 +1,27 @@
 # Create your views here.
 from django.shortcuts import render, redirect
-from .forms import VentaForm, formset_factory
-from .models import Producto
+from .forms import VentaForm
+from .models import Venta
+from django.http import HttpRequest, HttpResponse
+from django.contrib.admin.views.decorators import staff_member_required
+from django.views.generic import ListView
 
-def realizar_venta(request):
-    VentaDetalleFormSet = formset_factory(VentaForm, extra=1)
+def home (request):
+    return render (request, 'venta/index.html')
 
-    if request.method == 'POST':
-        formset = VentaDetalleFormSet(request.POST, prefix='venta')
+def registrar_pedido(request: HttpRequest) -> HttpResponse:
+    # Desde esta función los usuarios pueden registrar sus pedidos
+    if request.method == "POST":
+        form = VentaForm(request.POST)
+        if form.is_valid():
+            form.save()            
+            return render(request, "home/index.html", {"mensaje": "Pedido registrado, nos comunicaremos a la brevedad. Muchas Gracias!"})
+    else:  
+        form = VentaForm()
+        
+    return render(request, "venta/registrar_pedido.html", {"form": form})
 
-        if venta_form.is_valid() and formset.is_valid():
-            venta = venta_form.save()
-            for form in formset:
-                detalle_venta = form.save(commit=False)
-                detalle_venta.venta = venta
-                producto = detalle_venta.producto
-                detalle_venta.subtotal = producto.precio * detalle_venta.cantidad
-                detalle_venta.save()
-            # Aquí puedes redirigir a otra página o realizar alguna acción después de guardar la venta y sus detalles.
-            return redirect('ruta_redireccion')
 
-    else:
-        venta_form = VentaForm()
-        formset = VentaDetalleFormSet(prefix='venta')
-
-    productos = Producto.objects.all()
-    return render(request, 'registrar_venta.html', {'venta_form': venta_form, 'formset': formset, 'productos': productos})
+class VentaList(ListView):
+    # Desde esta función un usuario miembro del staff puede listar todos los pedidos recibidos
+    model = Venta
