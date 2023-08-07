@@ -31,7 +31,8 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ["username", "email", "password1", "password2"]
         help_texts = {k: "" for k in fields}
         widgets = {
-            "username": forms.TextInput(attrs={"class": "form-control"}),
+            "username": forms.TextInput(attrs={"class": "form-control, text-align"}),
+            "email": forms.EmailInput(attrs={"class": "form-control, text-align"}),
             "password1": forms.PasswordInput(attrs={"class": "form-control"}),
             "password2": forms.PasswordInput(attrs={"class": "form-control"}),
         }

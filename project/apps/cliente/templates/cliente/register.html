@@ -1,16 +1,16 @@
-{% extends 'Home/base.html' %}
+{% extends 'Home/index.html' %}
 
-{% block TITULO %}
+{% block TITULO_INDEX %}
     Crear Usuario
-{% endblock TITULO %}
+{% endblock TITULO_INDEX %}
 
 
-{% block CONTENIDO %}
+{% block CONTENIDO_INDEX %}
 
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Guardar</button>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
     </form>
 
-{% endblock CONTENIDO %}
+{% endblock CONTENIDO_INDEX %}

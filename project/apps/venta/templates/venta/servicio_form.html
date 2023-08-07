@@ -1,0 +1,46 @@
+{% extends 'home/index.html' %}
+
+{% block TITULO_INDEX %}
+    Solicitar Servicio
+{% endblock TITULO_INDEX %}
+
+{% block CONTENIDO_INDEX %}
+    <div class="row align-items-stretch mb-5">
+        <div class="col-md-6">
+            <div class="form-group">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div>
+                        <label for="{{ form.tiposervicio_id.id_for_label }}" class="form-control bg-primary">Tipo de Servicio: </label>
+                        <div class="form-control-color">{{ form.tiposervicio_id }}</div>
+                    </div>    
+                    <div>
+                        <label for="{{ form.cliente_id.id_for_label }}" class="form-control bg-primary">Cliente: </label>
+                        <div class="form-control-color">{{ form.cliente_id }}</div>
+                    </div>
+                    <div>
+                        <label for="{{ form.fecha_servicio.id_for_label }}" class="form-control bg-primary">Fecha de servicio: </label>
+                        <span class="tooltip-text">Tenga en cuenta ingresar una fecha posterior a hoy. Nos contactaremos con usted para coordinar la visita</span>
+                        <div class="form-control-color">{{ form.fecha_servicio }}</div>
+                    </div>
+                    <div>
+                        <label for="{{ form.detalle.id_for_label }}" class="form-control bg-primary">Detalle/Aclaración: </label>
+                        <div class="form-control-color ">{{ form.detalle }}</div>
+                    </div>
+                    <div>
+                        <label for="{{ form.color.id_for_label }}" class="form-control bg-primary" >Color: </label>
+                        <span class="tooltip-text">Colores disponibles: Negro, Gris, Blanco, Rojo, Azul, Verde, Rosa, Celeste, Violeta, Lila y Dorado.</span>
+                        <div class="form-control-color">{{ form.color }}</div>
+                    </div>
+                    <div>
+                        <label for="{{ form.imagen.id_for_label }}" class="form-control bg-primary">Imagen: </label>
+                        <span class="tooltip-text">Recuerde que los diseños deben ser vectores de colores planos (No realizamos impresiones)</span>
+                        <div class="form-control-color">{{ form.imagen }}</div>
+                    </div>
+                    <button type="submit">Guardar</button>
+                </form> 
+            </div>
+        </div>
+    </div>
+    <!-- tiposervicio_id, cliente_id, fecha_servicio, detalle, color, imagen -->
+{% endblock CONTENIDO_INDEX %}

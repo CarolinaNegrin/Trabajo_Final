@@ -14,7 +14,7 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'venta:home' %}">Realizar Pedidos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'producto:producto_list' %}">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'venta:servicios' %}">Servicios</a></li>
                     <li class="nav-item"><a class="nav-link text-info" href="{% url 'cliente:logout' %}">Logout</a></li>
                 {% else %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'cliente:register' %}">Registrarse</a></li>

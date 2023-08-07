@@ -1,0 +1,23 @@
+{% extends 'home/index.html' %}
+
+{% block TITULO_INDEX %}
+    <h1>Servicios</h1>
+{% endblock TITULO_INDEX %}
+
+{% block CONTENIDO_INDEX %}
+    <h3>Realizamos servicio de producción y colocación de vinilos</h3>
+    <h4>Acá vas a encontrar los tipos de servicios y sus precios, además vas a poder realizar tu pedido y reserva de turno</h4>
+    {% for servicio in servicios %}
+            <div class="container">
+                <h5 class="text-primary">{{ servicio.nombre }} ${{ servicio.precio }}</h5>  <a href="{% url 'venta:registrar_servicio' %}", class="btn btn-secondary  btn-sn">Solicitar servicio</a>
+            </div>
+    {% endfor %}
+    {% if user.is_staff %}
+        <div>
+            <ul><a href="{% url 'venta:registrar_tiposervicio' %}">Registrar nuevo tipo de servicio</a></ul>
+            <ul><a href="{% url 'venta:servicio_list' %}">Ver servicios solicitados</a></ul>
+        </div>
+    {% endif %}
+    
+
+{% endblock CONTENIDO_INDEX %}

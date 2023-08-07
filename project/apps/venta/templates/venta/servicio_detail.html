@@ -1,0 +1,24 @@
+{% extends 'home/index.html' %}
+{% load static %}
+
+{% block TITULO_INDEX %}
+    <h6>{{ object }}</h6>
+{% endblock TITULO_INDEX %}
+
+{% block CONTENIDO_INDEX %}
+    <div class="container bg-gradient text-black fw-bold ">
+        <ul>Tipo de servicio: {{ object.tiposervicio_id }} </ul>
+        <ul>Cliente: {{ object.cliente_id }}</ul>
+        <ul>Contacto: {{ object.cliente_id.contacto }}</ul>
+        <ul>Domicilio: {{ object.cliente_id.domicilio }}</ul>
+        <ul>Ciudad: {{ object.cliente_id.ciudad_id }}</ul>
+        <ul>Fecha de servicio solicitada: {{ object.fecha_servicio }} </ul>  
+        <ul>Detalle: {{ object.detalle }}</ul>
+        <ul>Color: {{ object.color }}</ul>
+        {% if object.imagen.url %}
+            <ul><img src="{{ object.imagen.url }}" alt="imagen" width="200" ></ul>
+        {% endif %}
+        
+    </div>
+<!-- tiposervicio_id, cliente_id, fecha_servicio, detalle, color, imagen -->
+{% endblock CONTENIDO_INDEX %}

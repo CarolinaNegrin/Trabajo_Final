@@ -1,0 +1,32 @@
+{% extends 'home/index.html' %}
+
+{% block TITULO_INDEX %}
+    <h1>Servicios Solicitados</h1>
+{% endblock TITULO_INDEX %}
+
+{% block CONTENIDO_INDEX %}
+    {% if object_list %}
+    <div>
+        <span class="tooltip-text">Buscar por fecha solicita para el servicio</span>
+        <form action="{% url 'venta:servicio_list' %}" method="get">
+            <input type="text" name="consulta" placeholder="Buscar...">
+        </form>
+    </div>
+
+    {% for object in object_list %}
+        <div class="container bg-transparent   text-start  ">
+            <ul>
+                {{ object.fecha }} {{ object.tiposervicio_id }}
+                <div class="column-gap-2 ">
+                    <a href="{% url 'venta:servicio_detail' object.id %}" class="btn btn-secondary  btn-sn">Ver detalle</a>  
+                </div>
+
+            </ul>
+        <br>
+        </div>
+    {% endfor %}        
+    {% else %}
+    <p>No se solicitaron servicios</p>
+    {% endif %}
+    
+{% endblock CONTENIDO_INDEX %}
