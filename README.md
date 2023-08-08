@@ -20,6 +20,7 @@ Boostrap 5
 Html 5
 Css
 
-Enlace para ver el video demostrativo:
+Enlace para ver el video demostrativo y modelo de entidad-relación:
+https://drive.google.com/drive/folders/1ZOda9l7Ls5K7aL0hgKwSkIxk2NH8Exi_?usp=sharing
 
 
