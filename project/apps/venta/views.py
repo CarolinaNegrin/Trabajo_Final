@@ -28,24 +28,29 @@ class VentaList(ListView):
     model = Venta
 
 class TipoServicioCreateView(CreateView):
+     # Desde esta función un usuario miembro del staff puede crear tipos de servicio
     model = TipoServicio
     form_class = TipoServicioForm
     success_url = reverse_lazy("venta:servicios")
 
 def servicios(request):
+    # Desde esta función se podrá visualizar todos los servicios disponibles
     servicios_registro = TipoServicio.objects.all()
     contexto = {"servicios": servicios_registro}
     return render (request, 'venta/servicios.html', contexto)
 
 class ServicioCreateView(CreateView):
+    # Desde esta función un usuario puede solicitar un servicio
     model = Servicio
     form_class = ServicioForm
     success_url = reverse_lazy("venta:confirmar")
 
 def confirmar (request):
+    # Esta función avisa al usuario que se registró su pedido
     return render(request, "venta/confirmar.html")
 
 class ServicioList(ListView):
+    # Desde esta función un usuario miembro del staff puede listar los servicios solicitados
     model = Servicio
     def get_queryset(self):
         if self.request.GET.get("consulta"):
@@ -56,4 +61,5 @@ class ServicioList(ListView):
         return object_list
     
 class ServicioDetail(DetailView):
+    # Desde esta función un usuario miembro del staff puede ver el detalle de un servicio solicitado
     model = Servicio
