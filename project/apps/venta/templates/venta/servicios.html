@@ -9,9 +9,10 @@
     <h4>Acá vas a encontrar los tipos de servicios y sus precios, además vas a poder realizar tu pedido y reserva de turno</h4>
     {% for servicio in servicios %}
             <div class="container">
-                <h5 class="text-primary">{{ servicio.nombre }} ${{ servicio.precio }}</h5>  <a href="{% url 'venta:registrar_servicio' %}", class="btn btn-secondary  btn-sn">Solicitar servicio</a>
+                <h5 class="text-primary">{{ servicio.nombre }} ${{ servicio.precio }}</h5>  
             </div>
     {% endfor %}
+    <a href="{% url 'venta:registrar_servicio' %}", class="btn btn-secondary  btn-sn">Solicitar servicio</a>
     {% if user.is_staff %}
         <div>
             <ul><a href="{% url 'venta:registrar_tiposervicio' %}">Registrar nuevo tipo de servicio</a></ul>
